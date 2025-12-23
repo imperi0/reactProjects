@@ -1,0 +1,14 @@
+* {
+  background-color: black;
+  color: white;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-align: center;
+}
+
+.Coin {
+  display: flex;
+  align-items: center;
+  border: 2px solid white;
+  border-color: white;
+  flex-direction: column;
+}
