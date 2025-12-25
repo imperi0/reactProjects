@@ -1,0 +1,77 @@
+/* Use 'border-box' so width/height INCLUDE padding/borders */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.app {
+  background-color: #0b1122;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center; /* Centers grid horizontally */
+  align-items: center;     /* Centers grid vertically */
+  font-family: sans-serif;
+}
+
+.cards {
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: repeat(4, 100px);
+  /* Removed hardcoded margins; Flexbox on .app handles centering now */
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  perspective: 1000px; /* Essential for 3D feel */
+}
+
+/* Common styles for both sides */
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;         /* Flex makes centering content (?) inside easy */
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s;
+  backface-visibility: hidden; /* Important: prevents seeing the back through the front */
+}
+
+/* Front Styling */
+.card-front {
+  background-color: #1a2238;
+  color: aliceblue;
+  opacity: 1;
+}
+
+/* Back Styling */
+.card-back {
+  background-color: #2d3b5e; 
+  color: #81cd81;
+  transform: rotateY(180deg); /* Start flipped away */
+  opacity: 0;
+}
+
+/* --- THE FLIP ANIMATION --- */
+
+.card.flipped .card-front {
+  transform: rotateY(180deg) scale(0.9);
+  opacity: 0;
+}
+
+.card.flipped .card-back {
+  transform: rotateY(0deg);
+  opacity: 1;
+}
+
+/* Subtle Glow on Hover */
+.card:hover .card-front:not(.flipped) {
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+}
