@@ -1,11 +1,17 @@
 import { useEffect, useState } from "react"
 import Axios from "axios"
 import Coin from "./Coin";
+import Header from "./Header"
 
 function App() {
 
   const [listOfCoins, setListOfCoins] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState("");
+
+  const filteredList = listOfCoins.filter((coin) => {
+    return coin.name.toLowerCase().includes(search.toLowerCase());
+  })
 
   useEffect(() => {
     console.log("Useeffect called");
@@ -22,11 +28,15 @@ function App() {
       
     }, []);
 
+  
+
   return (
     <div className='App'>
-      <div className='CryptoHeader'></div>
+      <div className='CryptoHeader'>
+        <Header setSearch={setSearch}/>
+      </div>
       <div className='CryptoMain'>
-        {(!loading) && listOfCoins.slice(0,10).map((coin) => {
+        {(!loading) && filteredList.map((coin) => {
           return(
             <Coin key={coin.id} obj={coin} />
           )

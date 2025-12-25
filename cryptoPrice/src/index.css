@@ -1,14 +1,118 @@
-* {
-  background-color: black;
-  color: white;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  text-align: center;
+/* 1. The Deep Space Background */
+body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at 50% 50%, #111827 0%, #000000 100%);
+  color: #f8fafc;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  min-height: 100vh;
 }
 
-.Coin {
+/* 2. Layout Container */
+.App {
   display: flex;
-  align-items: center;
-  border: 2px solid white;
-  border-color: white;
   flex-direction: column;
+  align-items: center;
+  padding: 60px 20px;
+}
+
+.Header input {
+  width: 450px;
+  padding: 16px 28px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 12px;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+}
+
+.Header input:focus {
+  outline: none;
+  width: 500px;
+  border-color: #38bdf8;
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
+}
+
+/* 4. The Grid */
+.CryptoMain {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 60px;
+}
+
+/* 5. The Glassmorphic Coin Card */
+.Coin {
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 40px 20px;
+  text-align: center;
+  overflow: hidden;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+
+.Coin:hover {
+  transform: translateY(-12px) scale(1.02);
+  border-color: rgba(56, 189, 248, 0.6);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+
+.Coin:hover::before {
+  opacity: 1;
+}
+
+/* 7. Typography inside the Card */
+.Coin h2 {
+  font-size: 0.75rem;
+  color: #38bdf8;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 8px;
+  opacity: 0.8;
+}
+
+.Coin h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0;
+  color: #ffffff;
+}
+
+.Coin p {
+  margin-top: 15px;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #10b981; /* Neon Green */
+  text-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+}
+
+/* Decorative corner lines */
+.Coin::after {
+  content: "";
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid rgba(56, 189, 248, 0.5);
+  border-right: 2px solid rgba(56, 189, 248, 0.5);
+  opacity: 0;
+  transition: 0.1s;
+}
+
+.Coin:hover::after{
+  opacity: 1;
 }
