@@ -5,7 +5,7 @@ const Card = (props) => {
 
     return (
         <div className={`card ${card.isFlipped ? "flipped" : ""}`} key={card.id} onClick={() => {
-            handleClick(card.id);
+            handleClick(card);
         }}>
             <div className="card-front"> ? </div>
             <div className="card-back">{card.value}</div>
