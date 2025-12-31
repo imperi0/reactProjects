@@ -1,14 +1,11 @@
 import { useState } from "react";
-import './App.css'
-
+import Home from "./pages/Home"
 
 function App() {
   
-  const [isLiked, setIsLiked] = useState(flase);
-
   return (
     <div>
-      <h2></h2>
+      <Home/>
     </div>
   );
 }
